@@ -1,29 +1,36 @@
-<form>
-	<div class="row">
-		<div class="small-12 columns">
-			 <h1>Create a New List</h1>
+<script type="text/javascript">Toodoo.setState({page.state|js|s});</script>
+<div id="app">
+	<form>
+		<div class="row">
+			<div class="small-12 columns">
+				 <h1>{page.title}</h1>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="small-4 columns">
-			 <input type="text" placeholder="My List Title" />
+		<div id="list">
+			<div class="row">
+				<div class="small-4 columns">
+					 <input id="title" type="text" placeholder="My List Title" value="{page.state.title}" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns">
+					<ul id="items">
+						{#page.state.list}
+						   {>"list/item.dust"/}
+						{/page.state.list}
+					</ul>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="small-4 columns">
-			<ul>
-				<li><input type="checkbox" /><input type="text" placeholder="List item" /></li>
-			</ul>
+		<div class="row">
+			<div class="small-12 columns">
+				<a id="add" href="#" role="button" class="button tiny radius">Add an item</a>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="small-12 columns">
-			<a href="#" role="button" class="button tiny radius">Add an item</a>
+		<div class="row">
+			<div class="small-12 columns">
+				<a id="save" href="#" role="button" class="button tiny radius">Save</a>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="small-12 columns">
-			<a href="#" role="button" class="button tiny radius">Save</a>
-		</div>
-	</div>
-</form>
+	</form>
+</div>

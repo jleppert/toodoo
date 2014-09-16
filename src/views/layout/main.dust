@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="/css/vendor/foundation.css" />
 
     <link rel="stylesheet" href="/css/index.css" />
+
+    <script type="text/javascript" src="/js/vendor/zepto.js"></script>
+    <script type="text/javascript" src="/js/vendor/underscore.js"></script>
+    <script type="text/javascript" src="/js/vendor/backbone.js"></script>
+    <script type="text/javascript" src="/js/vendor/dust-core.js"></script>
+
+    <script type="text/javascript" src="/tpl/list/item.dust"></script>
+
+    <script type="text/javascript" src="/js/index.js"></script>
   </head>
   <body>
     {>"{page.template}.dust"/}

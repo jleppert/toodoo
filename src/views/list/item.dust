@@ -1,0 +1,1 @@
+<li><input type="checkbox" {?checked} checked="checked" {/checked} /><input type="text" placeholder="List item" value="{title}" /></li>
