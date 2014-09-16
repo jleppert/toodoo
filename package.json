@@ -1,0 +1,38 @@
+{
+  "name": "toodoo",
+  "title": "Toodoo!",
+  "version": "0.0.1",
+  "author": {
+    "name": "Johnathan Leppert",
+    "url": "http://github.com/jleppert/"
+  },
+  "homepage": "http://jleppert.github.io/toodoo/",
+  "description": "Toodoo! for people who like to make lists..",
+  "contributors": [
+    {
+      "name": "Johnathan Leppert",
+      "email": "johnathan.leppert@gmail.com"
+    }
+  ],
+  "scripts": {
+    "test": "gulp test",
+    "start": "./bin/controller.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jleppert/toodoo.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.8"
+  },
+  "dependencies": {
+    "body-parser": "^1.8.1",
+    "consolidate": "^0.10.0",
+    "dust": "^0.3.0",
+    "dustjs-linkedin": "^2.4.2",
+    "express": "^4.9.0",
+    "lodash": "^2.4.1",
+    "yargs": "^1.3.1"
+  }
+}
