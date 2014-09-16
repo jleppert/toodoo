@@ -1,5 +1,6 @@
 *.swp
 var/logs/**
 var/build/**
+var/data/*.json
 npm_modules
 .npm_debug.log

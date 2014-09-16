@@ -1,0 +1,29 @@
+<form>
+	<div class="row">
+		<div class="small-12 columns">
+			 <h1>Create a New List</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-4 columns">
+			 <input type="text" placeholder="My List Title" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-4 columns">
+			<ul>
+				<li><input type="checkbox" /><input type="text" placeholder="List item" /></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<a href="#" role="button" class="button tiny radius">Add an item</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<a href="#" role="button" class="button tiny radius">Save</a>
+		</div>
+	</div>
+</form>

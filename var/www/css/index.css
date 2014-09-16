@@ -1,0 +1,16 @@
+ul {
+	list-style: none;
+	margin-left: 0px;
+}
+
+li input[type="checkbox"] {
+	float: left;
+	margin-top: 12px;
+	margin-right: 5px;
+}
+
+li input[type="text"] {
+	border: none;
+	box-shadow: none;
+	margin: 0px;
+}

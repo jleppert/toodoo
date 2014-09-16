@@ -6,7 +6,6 @@ var PACKAGE 	= require('../package.json'),
 	path    	= require('path'),
 	bodyParser	= require('body-parser');
 
-
 /**
  * Toodoo application
  * @constructor
@@ -48,19 +47,17 @@ Toodoo.prototype.start = function start() {
 	app.set('views', path.resolve(self.opts.paths.appRoot, self.opts.paths.views));
 	app.use(bodyParser.json());
 
-	// index page
-	app.get('/', function(req, res) {
-		res.render('layout/main', {
-			app: self.opts,
-			page: {
-				title: 'Create A List',
-				template: 'index'
-			}
-		});
-	});
+	// index page - this "redirects" (internally) to create -- no list feature
+	app.get('/', this.list.index());
+
+	// list create
+	app.get('/list/create', this.list.create());
+
+	// list view/edit
+	app.get('/list/*', this.list.update());
 
 	// handle 404's
-	app.get('*', function(req, res) {
+	app.get('*', function error_404(req, res) {
 		res.statusCode = 404;
 		res.render('layout/main', {
 			app: self.opts,
@@ -74,6 +71,45 @@ Toodoo.prototype.start = function start() {
 	this.server = this.server || app.listen(this.opts.port, function logStart() {
 		self.log('%s is listening on port %d', self.opts.name, self.server.address().port);
 	});
+};
+
+/**
+ * Defines CRUD operations for a list
+ */
+Toodoo.prototype.list = {
+	index: function list() {
+		var self = this;
+
+		return function index(req, res) {
+			self.create().apply(this, arguments);
+		}
+	},
+	create: function list() {
+		var self = this;
+
+		return function create(req, res) {
+			res.render('layout/main', {
+				app: self.opts,
+				page: {
+					title: 'Create a New List',
+					template: 'list/create'
+				}
+			});
+		}
+	},
+	update: function list() {
+		var self = this;
+
+		return function update(req, res) {
+			res.render('layout/main', {
+				app: self.opts,
+				page: {
+					title: 'Some List',
+					template: 'list/edit'
+				}
+			});
+		}
+	}
 };
 
 /**
@@ -93,5 +129,5 @@ module.exports = {
 	run: function run(opts) {
 		if(instance === undefined) instance = new Toodoo(opts);
 		return instance;
-	}	
+	}
 };
