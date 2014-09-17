@@ -81,6 +81,7 @@ Toodoo.prototype.start = function start() {
 			var tplPath = path.resolve(self.opts.paths.appRoot, self.opts.paths.views, req.url.replace('/tpl/', ''));
 			var tplSource = fs.readFileSync(tplPath);
 			res.statusCode = 200;
+			res.contentType('application/javascript');
 			res.send(dust.compile(tplSource.toString(), path.basename(tplPath, '.dust')));
 			return;
 		} catch(error) {
