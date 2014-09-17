@@ -1,4 +1,4 @@
-var PACKAGE 	= require('../package.json'),
+var PACKAGE     = require('../package.json'),
 	_			= require('lodash'),
 	express 	= require('express'),
 	cons    	= require('consolidate'),
