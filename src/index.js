@@ -154,7 +154,7 @@ Toodoo.prototype.list = {
 
 					listData.uuid = id;
 					// write the file data
-					var stream = fs.createWriteStream(uuidPath(app.opts.paths.appRoot, app.opts.paths.data, uuid));
+					var stream = fs.createWriteStream(uuidPath(app.opts.paths.appRoot, app.opts.paths.data, id));
 					stream.end(JSON.stringify(listData));
 
 					// append to index (so we can keep track of what uuid's were created)
@@ -283,10 +283,7 @@ Toodoo.prototype.log = function log() {
  * @private
  */
  function uuidPath(appRoot, dataPath, id) {
- 	//console.log('making path:', appRoot, dataPath, id);
  	return path.resolve(appRoot, dataPath, md5(id) + '.json');
- 	//console.log('generated:', pv);
- 	//return pv;
  }
 
 /**
