@@ -1,17 +1,19 @@
-<script type="text/javascript">Toodoo.setState({page.state|js|s});</script>
+<script type="text/javascript">Toodoo.setState({page.state|js|s}, {page.appInfo|js|s});</script>
 <div id="app">
 	<form>
 		<div class="row">
 			<div class="small-12 columns">
-				 <h1>{page.title}</h1>
+				 <h1 id="list-title">{page.title}</h1>
 			</div>
 		</div>
 		<div id="list">
-			<div class="row">
+			{^page.state.uuid}
+			<div id="title-row" class="row">
 				<div class="small-4 columns">
-					 <input id="title" type="text" placeholder="My List Title" value="{page.state.title}" />
+					 <input id="title" type="text" placeholder="List Title" value="{page.state.title}" />
 				</div>
 			</div>
+			{/page.state.uuid}
 			<div class="row">
 				<div class="small-4 columns">
 					<ul id="items">

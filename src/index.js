@@ -126,7 +126,10 @@ Toodoo.prototype.list = {
 				page: {
 					title: 'Create a New List',
 					template: 'list/create',
-					state: { title: '', uuid: '', list: [{ title: '', checked: false}]}
+					state: { title: '', list: [{ title: '', checked: false}]},
+					appInfo: {
+						title: app.opts.title
+					}
 				}
 			});
 		}
@@ -159,7 +162,7 @@ Toodoo.prototype.list = {
 					index.end(id + "\n");
 
 					// all went well, notify client
-					res.statusCode = 201;
+					res.statusCode = 200;
 					res.send(listData);
 					return;
 				} catch(error) {
@@ -180,17 +183,21 @@ Toodoo.prototype.list = {
 
 		return function read(req, res) {
 			try {
-				var listData = require(uuidPath(app.opts.path.appRoot, app.opts.path.data, req.param('uuid')));
+				var listData = JSON.parse(fs.readFileSync(uuidPath(app.opts.paths.appRoot, app.opts.paths.data, req.param('uuid'))));
 			} catch(error) {
-				routes[404]().apply(this, arguments);
+				routes[404](app).apply(this, arguments);
+				return;
 			}
 
 			res.render('layout/main', {
 				app: app.opts,
 				page: {
 					title: listData.title,
-					list: JSON.stringify(listData),
-					template: 'list/edit'
+					template: 'list/edit',
+					state: listData,
+					appInfo: {
+						title: app.opts.title
+					}
 				}
 			});
 		}
@@ -207,7 +214,7 @@ Toodoo.prototype.list = {
 					var listData = req.body;
 					var id = req.param('uuid') || listData.uuid;
 
-					var stream = fs.createWriteStream(uuidPath(app.opts.paths.appRoot, app.opts.paths.data, uuid));
+					var stream = fs.createWriteStream(uuidPath(app.opts.paths.appRoot, app.opts.paths.data, id));
 					stream.end(JSON.stringify(listData));
 
 					try {
@@ -276,7 +283,10 @@ Toodoo.prototype.log = function log() {
  * @private
  */
  function uuidPath(appRoot, dataPath, id) {
+ 	//console.log('making path:', appRoot, dataPath, id);
  	return path.resolve(appRoot, dataPath, md5(id) + '.json');
+ 	//console.log('generated:', pv);
+ 	//return pv;
  }
 
 /**
