@@ -8,7 +8,6 @@
 
 		setState: function(state, appInfo) {
 			this.model = new Toodoo.models.list(state);
-			console.log('setstate', state, appInfo);
 			var self = this;
 			$(document).ready(function() {
 				self.view  = new Toodoo.views.app({ model: self.model, appInfo: appInfo });
@@ -71,8 +70,6 @@
 			this.model.bind('change', function(model) {
 				self.$list_title.html(model.get('title'));
 				$(document).prop('title', self.appInfo.title + ': ' + model.get('title'));
-				console.log('title changed!!');
-				console.log(model.get('title'));
 			});
 
 		},
@@ -156,7 +153,6 @@
 			} else {
 				this.model.set('checked', false);
 			}
-			console.log('updated model!!', this.model);
 		},
 
 		updateTitle: function(event) {
