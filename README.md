@@ -3,7 +3,7 @@ Toodoo
 
 * Uses express for web server and dust server side templating
 * Uses dust client side templates with shared views on client/server
-* Templates are rendered on the server for performance on initial load, and then state and control are managed by Backbone on the client
+* Templates are rendered on the server for performance on initial load, and then state and control are managed by Backbone on the client, demonstrating isomorphic design concepts (see http://blog.nodejitsu.com/scaling-isomorphic-javascript-code/ and http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/)
 * Foundation & Zepto for frontend
 
 Running The Application
